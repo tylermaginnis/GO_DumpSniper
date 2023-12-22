@@ -42,8 +42,10 @@ type MEMORY_BASIC_INFORMATION struct {
 
 func main() {
 	args := os.Args[1:]
-
-	if len(args) == 1 {
+	if len(args) == 0 {
+		listProcesses()
+		return
+	} else if len(args) == 1 {
 		pid, err := strconv.Atoi(args[0])
 		if err != nil {
 			fmt.Printf("Invalid PID: %s\n", args[0])
